@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskList = document.getElementById('task-list');
 
     // Load tasks from localStorage when page loads
+    loadTasks();
+
+    // Function to load tasks from localStorage
     function loadTasks() {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         
@@ -13,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Create task element (separated for reuse)
+    // Function to create a task element
     function createTaskElement(taskText, saveToStorage = true) {
         const li = document.createElement('li');
         li.textContent = taskText;
@@ -35,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Update localStorage with current tasks
+    // Function to update localStorage with current tasks
     function updateLocalStorage() {
         const tasks = [];
         document.querySelectorAll('#task-list li').forEach(function(taskItem) {
@@ -66,7 +69,4 @@ document.addEventListener('DOMContentLoaded', function() {
             addTask();
         }
     });
-
-    // Load tasks when page loads
-    loadTasks();
 });
